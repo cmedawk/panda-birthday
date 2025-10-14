@@ -93,21 +93,59 @@ body, html {
     background-color: #FFF8E7;
     border: 2px solid #E0D8C0;
     border-radius: 8px;
-    display: block;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, 50px); /* empieza debajo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     padding: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     opacity: 0;
-    transition: transform 1.5s ease, opacity 1.5s ease;
 }
 
 /*carta visible*/
 #card.show {
-    display: block;
-    transform: translate(-50%, -50%); /* sube a posición central */
     opacity: 1;
+    animation: card-bounce 2s forwards;
+}
+
+/* Keyframes para rebote */
+@keyframes card-bounce {
+    0% { transform: translate(-50%, 50px);}
+    60% {transform: translate(-50%, -60px);}
+    80% {transform: translate(-50%, -50px);}
+    100% {transform: translate(-50%, -55px);}
+}
+
+/* Contenedor global */
+#confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 9999;
+}
+
+/* Confeti individual */
+.confetti {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: red; /* se reemplaza en JS */
+  border-radius: 50%;
+  opacity: 1;
+  transform: translate(0,0) rotate(0deg);
+  /* transición de caída lenta */
+  transition: transform 5s ease-out, opacity 5s ease-out;
+  box-shadow: 0 0 2px rgba(0,0,0,0.2);
+}
+
+@keyframes confetti-fall {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(200px) rotate(360deg); opacity: 0; }
 }
