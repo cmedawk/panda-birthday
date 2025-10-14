@@ -1,0 +1,113 @@
+/*Reset Basico*/
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to top, #a8d0e6, white );
+    position: relative;
+}
+
+/*Video en toda la pantalla*/
+#introVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+/* Wrapper para centrar el sobre */
+#envelopeWrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; /* se mostrará cuando termine el video */
+}
+
+/*Sobre flotante*/
+#envelope {
+    width: 250px;
+    height: 150px;
+    background-color: #F5E6CC;
+    border: 2px solid #E8D7B3;
+    border-radius: 10px;
+    cursor: pointer;
+    animation: float 2s ease-in-out infinite;
+    transition: transform 1.5s ease, opacity 1.5s ease;
+}
+
+#envelope::before {
+    content: '';
+    position: absolute;
+    top: 0;           /* al inicio del rectángulo */
+    left: 0;
+    width: 0;
+    height: 0;
+    border-left: 125px solid transparent;   /* mitad del ancho */
+    border-right: 125px solid transparent;  /* mitad del ancho */
+    border-top: 75px solid #E8D7B3;        /* triángulo apuntando hacia abajo */
+}
+
+/* Texto centrado dentro del sobre */
+.envelope-text {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+    font-weight: bold;
+}
+
+/*Abriendo el sobre*/
+#envelope.open {
+    animation: openDown 1.3s forwards;
+}
+
+@keyframes openDown {
+    0% { transform: translateY(0px); opacity: 1; }
+    100% { transform: translateY(50px); opacity: 0; }
+}
+
+/*Animacion flotante*/
+@keyframes float {
+    0% { transform: translate(0px, 0px); }
+    50% { transform: translate(5px, -20px); }
+    100% { transform: translate(0px, 0px); }
+}
+
+/*Carta*/
+#card {
+    width: 250px;
+    height: 150px;
+    background-color: #FFF8E7;
+    border: 2px solid #E0D8C0;
+    border-radius: 8px;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50px); /* empieza debajo */
+    text-align: center;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: transform 1.5s ease, opacity 1.5s ease;
+}
+
+/*carta visible*/
+#card.show {
+    display: block;
+    transform: translate(-50%, -50%); /* sube a posición central */
+    opacity: 1;
+}
