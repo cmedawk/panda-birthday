@@ -30,6 +30,7 @@ body, html {
     left: 50%;
     transform: translate(-50%, -50%);
     display: none; /* se mostrará cuando termine el video */
+    z-index: 20;
 }
 
 /*Sobre flotante*/
@@ -40,8 +41,21 @@ body, html {
     border: 2px solid #E8D7B3;
     border-radius: 10px;
     cursor: pointer;
+    z-index: 30;
     animation: float 2s ease-in-out infinite;
     transition: transform 1.5s ease, opacity 1.5s ease;
+}
+
+#envelope::after {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 12px; /* ajustar según el borde del sobre */
+    z-index: -1; /* detrás del sobre */
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.8); /* brillo dorado */
 }
 
 #envelope::before {
@@ -96,13 +110,14 @@ body, html {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, 50px); /* empieza debajo */
+    transform: translate(-50%, -50%); /* empieza debajo */
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     padding: 20px;
     opacity: 0;
+    z-index: 10;
 }
 
 /*carta visible*/
@@ -111,12 +126,37 @@ body, html {
     animation: card-bounce 2s forwards;
 }
 
+#card::before{
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 12px;
+    z-index: -1;
+    box-shadow: 0 0 25px rgba(180, 100, 255, 0.5);
+    animation: card-glow 3s ease-in-out infinite;
+}
+
 /* Keyframes para rebote */
 @keyframes card-bounce {
-    0% { transform: translate(-50%, 50px);}
-    60% {transform: translate(-50%, -60px);}
-    80% {transform: translate(-50%, -50px);}
-    100% {transform: translate(-50%, -55px);}
+    0% { transform: translate(-50%, 50px); opacity: 0; }
+    60% { transform: translate(-50%, -60px); opacity: 1; }
+    80% { transform: translate(-50%, -50px); }
+    100% { transform: translate(-50%, -55px); }
+}
+
+/* Keyframes brillo pulsante */
+@keyframes card-glow {
+    0%, 100% {
+        box-shadow: 0 0 10px rgba(180, 100, 255, 0.3),
+                    0 0 20px rgba(150, 80, 255, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(180, 100, 255, 0.6),
+                    0 0 40px rgba(150, 80, 255, 0.3);
+    }
 }
 
 /* Contenedor global */

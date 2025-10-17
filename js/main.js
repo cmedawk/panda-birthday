@@ -1,29 +1,21 @@
-// ===============================
-// CONFIGURACIÓN DE EFECTOS
-// ===============================
-const confettiCount = 500;        // Cantidad de partículas
-const explosionDistance = 800;   // Distancia máxima de la explosión inicial (px)
-const explosionDuration = 0.5;   // Duración de la explosión inicial (s)
-const fallDistance = 800;        // Distancia vertical de la caída lenta (px)
-const fallSpread = 414;          // Dispersión horizontal durante la caída (px)
-const fallDuration = 30;          // Duración de la caída lenta (s)
-
-// ===============================
-// ELEMENTOS
-// ===============================
+/**Elementos */
 const video = document.getElementById('introVideo');
 const envelope = document.getElementById('envelope');
 const card = document.getElementById('card');
 const confettiContainer = document.getElementById('confetti-container');
 
-// Colores para confeti
-/*const confettiColors = ['#FAD6BF','#F8C8DC','#FFEAD5','#FAFAFA','#F2F2F2'];*/
+/**Configuracion para efecto de particulas */
+const confettiCount = 500;        // Cantidad de partículas
+const explosionDistance = 800;   // Distancia máxima de la explosión inicial (px)
+const explosionDuration = 0.5;   // Duración de la explosión inicial (s)
+const fallDistance = 800;        // Distancia vertical de la caída lenta (px)
+const fallSpread = 414;          // Dispersión horizontal durante la caída (px)
+const fallDuration = 20;          // Duración de la caída lenta (s)
+
+/**Colores del Confeti */
 const confettiColors = ['#FFB57B', '#FF8AC4', '#FFD3A6', '#FFFFFF', '#E6E6E6'];
 
-
-// ===============================
-// FUNCIÓN DE CONFETI
-// ===============================
+/**Funcion para generar confeti */
 function generateConfetti() {
     const rect = card.getBoundingClientRect();
     const centerX = window.innerWidth / 2;   // ancho de la pantalla / 2
@@ -70,9 +62,7 @@ function generateConfetti() {
     }
 }
 
-// ===============================
-// EVENTOS
-// ===============================
+/**Eventos */
 video.addEventListener('ended', () => {
     video.style.display = 'none';
     envelope.parentElement.style.display = 'block';
