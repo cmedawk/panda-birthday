@@ -135,7 +135,7 @@ body, html {
     bottom: -2px;
     border-radius: 12px;
     z-index: -1;
-    box-shadow: 0 0 25px rgba(180, 100, 255, 0.5);
+    box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
     animation: card-glow 3s ease-in-out infinite;
 }
 
@@ -150,12 +150,12 @@ body, html {
 /* Keyframes brillo pulsante */
 @keyframes card-glow {
     0%, 100% {
-        box-shadow: 0 0 10px rgba(180, 100, 255, 0.3),
-                    0 0 20px rgba(150, 80, 255, 0.2);
+        box-shadow: 0 0 8px rgba(255, 215, 0, 0.3),
+                    0 0 16px rgba(255, 215, 0, 0.2);
     }
     50% {
-        box-shadow: 0 0 20px rgba(180, 100, 255, 0.6),
-                    0 0 40px rgba(150, 80, 255, 0.3);
+        box-shadow: 0 0 16px rgba(255, 215, 0, 0.6),
+                    0 0 32px rgba(255, 215, 0, 0.3);
     }
 }
 
@@ -188,4 +188,19 @@ body, html {
 @keyframes confetti-fall {
     0% { transform: translateY(0) rotate(0deg); opacity: 1; }
     100% { transform: translateY(200px) rotate(360deg); opacity: 0; }
+}
+
+/* Nube compuesta */
+.cloud {
+    position: absolute;
+    will-change: transform;
+    animation-name: moveCloud;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+}
+
+@keyframes moveCloud {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(120vw); } /* se mueve más allá de la pantalla */
 }
