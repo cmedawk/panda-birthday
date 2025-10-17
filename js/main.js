@@ -3,6 +3,7 @@ const video = document.getElementById('introVideo');
 const envelope = document.getElementById('envelope');
 const card = document.getElementById('card');
 const confettiContainer = document.getElementById('confetti-container');
+const cloudsContainer = document.getElementById('clouds-container');
 
 /**Configuracion para efecto de particulas */
 const confettiCount = 500;        // Cantidad de partículas
@@ -59,6 +60,38 @@ function generateConfetti() {
 
         // Eliminar confeti después de la animación completa
         setTimeout(() => confetti.remove(), (explosionDuration + fallDuration) * 1000);
+    }
+}
+
+/**Seccion de Nubes */
+const cloudCount = 5;  // cantidad de nubes por fila
+const rows = 20;         // número de filas
+
+for (let row = 0; row < rows; row++) {
+    for (let i = 0; i < cloudCount; i++) {
+        const cloud = document.createElement('img');
+        cloud.src = 'assets/nube.png';
+        cloud.classList.add('cloud');
+
+        // Posición vertical según la fila + variación aleatoria
+        cloud.style.top = `${10 + row * 30 + Math.random() * 20}%`;
+
+        // Escala aleatoria para variar tamaño
+        const scale = 0.5 + Math.random() * 0.8;
+        cloud.style.width = `${120 * scale}px`;
+
+        // Posición inicial fuera de la pantalla (izquierda)
+        cloud.style.left = `-150px`;
+
+        // Animación horizontal
+        const duration = 30 + Math.random() * 30; // 30 a 60s
+        cloud.style.animationDuration = `${duration}s`;
+
+        // Delay aleatorio para escalonar la entrada
+        const delay = Math.random() * 5; // unos segundos de diferencia
+        cloud.style.animationDelay = `${delay}s`;
+
+        cloudsContainer.appendChild(cloud);
     }
 }
 
