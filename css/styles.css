@@ -22,6 +22,34 @@ body.sky-animating {
     animation: skyCycle 60s linear infinite;
 }
 
+/*Cambios progresivos del cielo*/
+@keyframes skyCycle {
+    0% {
+        background: linear-gradient(to top, #a8d0e6, white); /* Día claro */
+    }
+    25% {
+        background: linear-gradient(to top, #ffd6a5, #ffb48a); /* Tarde cálida */
+    }
+    50% {
+        background: linear-gradient(to top, #ff9966, #ff5e62); /* Atardecer */
+    }
+    75% {
+        background: linear-gradient(to top, #1e3c72, #2a5298); /* Noche */
+    }
+    100% {
+        background: linear-gradient(to top, #a8d0e6, white); /* Regreso al día */
+    }
+}
+
+/*transicion*/
+.cloud {
+    transition: opacity 2s ease-in-out;
+}
+
+body.night .cloud {
+    opacity: 0;
+}
+
 /*Video en toda la pantalla*/
 #introVideo {
     width: 100%;
@@ -213,34 +241,6 @@ body.sky-animating {
 @keyframes moveCloud {
     0% { transform: translateX(0); }
     100% { transform: translateX(120vw); } /* se mueve más allá de la pantalla */
-}
-
-/*Cambios progresivos del cielo*/
-@keyframes skyCycle {
-    0% {
-        background: linear-gradient(to top, #a8d0e6, white); /* Día claro */
-    }
-    25% {
-        background: linear-gradient(to top, #ffd6a5, #ffb48a); /* Tarde cálida */
-    }
-    50% {
-        background: linear-gradient(to top, #ff9966, #ff5e62); /* Atardecer */
-    }
-    75% {
-        background: linear-gradient(to top, #1e3c72, #2a5298); /* Noche */
-    }
-    100% {
-        background: linear-gradient(to top, #a8d0e6, white); /* Regreso al día */
-    }
-}
-
-/*transicion*/
-.cloud {
-    transition: opacity 2s ease-in-out;
-}
-
-body.night .cloud {
-    opacity: 0;
 }
 
 /*Estrellas*/
