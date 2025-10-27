@@ -8,7 +8,6 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    /*background: linear-gradient(to top, #a8d0e6, white );*/
     position: relative;
 }
 
@@ -138,25 +137,30 @@ body.night .cloud {
     100% { transform: translate(0px, 0px); }
 }
 
-/*Carta*/
 #card {
-    width: 250px;
-    height: 150px;
+    width: 330px;
+    max-width: 90%;
+    max-height: 80%;
+    left: 40%;
+    top: 5%;
     background-color: #FFF8E7;
     border: 2px solid #E0D8C0;
     border-radius: 8px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* empieza debajo */
+
     display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    flex-direction: column;      /* para apilar el contenido verticalmente */
+    justify-content: center;     /* centra verticalmente */
+    align-items: center;         /* centra horizontalmente */
+    
+    text-align: center;          /* centra el texto dentro de los elementos */
     padding: 20px;
     opacity: 0;
     z-index: 10;
+    overflow-y: auto;            /* scroll si es necesario */
+    box-sizing: border-box;
+    position: relative;
 }
+
 
 /*carta visible*/
 #card.show {
@@ -166,7 +170,7 @@ body.night .cloud {
 
 #card::before{
     content: '';
-    position: absolute;
+    position: relative;
     top: -2px;
     left: -2px;
     right: -2px;
@@ -175,6 +179,22 @@ body.night .cloud {
     z-index: -1;
     box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
     animation: card-glow 3s ease-in-out infinite;
+}
+
+#card .message {
+    width: 100%;
+    word-break: break-word;  /* evita que palabras largas o emojis rompan la línea */
+    white-space: pre-wrap;   /* mantiene los saltos de línea */
+    font-size: 14px;
+    line-height: 1.5;
+    color: #333;
+    text-align: center;      /* centra el texto dentro del div */
+    margin: 0;
+}
+
+#card .message p {
+    margin: -5px;
+    text-align: center;
 }
 
 /* Keyframes para rebote */
